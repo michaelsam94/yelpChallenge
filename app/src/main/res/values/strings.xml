@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">YelpChallenge</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="loading">loading</string>
+    <string name="wait_moment">wait moment</string>
+    <string name="gps_network_not_enabled">gps not enabled</string>
+    <string name="open_location_settings">open location settings</string>
+    <string name="cancel">cancel</string>
+    <string name="request_timeout">Request timeout</string>
+
+</resources>
