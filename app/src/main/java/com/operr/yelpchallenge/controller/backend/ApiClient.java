@@ -6,6 +6,7 @@ package com.operr.yelpchallenge.controller.backend;
 import com.operr.yelpchallenge.common.helper.Logger;
 import com.operr.yelpchallenge.common.helper.Utilities;
 import com.operr.yelpchallenge.common.view.BaseApplication;
+import com.operr.yelpchallenge.controller.UserManger;
 
 import org.scribe.model.Token;
 import org.scribe.oauth.OAuthService;
@@ -27,8 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-
-    public static final String REQUESTS_BASE_URL = "https://api.yelp.com/v3/businesses/search/";
+    public static final String REQUESTS_BASE_URL = "https://api.yelp.com/";
 
     public static String token;
 
@@ -37,7 +37,8 @@ public class ApiClient {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Accept", "application/json");
-        if(token != null) headers.put("Authorization", "Bearer " + token);
+        if(UserManger.getInstance().getAuthClient() != null) headers.put("Authorization", "Bearer "
+                + UserManger.getInstance().getAuthClient().getAccessToken());
         return headers;
     }
 

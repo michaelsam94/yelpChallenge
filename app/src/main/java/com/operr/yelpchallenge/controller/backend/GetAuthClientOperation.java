@@ -4,6 +4,7 @@ package com.operr.yelpchallenge.controller.backend;
 import android.content.Context;
 
 import com.operr.yelpchallenge.common.controller.backend.BaseOperation;
+import com.operr.yelpchallenge.controller.UserManger;
 import com.operr.yelpchallenge.model.AuthClient;
 import com.operr.yelpchallenge.model.Client;
 
@@ -20,6 +21,7 @@ public class GetAuthClientOperation extends BaseOperation<AuthClient> {
     @Override
     public AuthClient doMain() throws Throwable {
         AuthClient authClient = OperationsManager.getInstance().getAuthClient(mClient);
+        if(authClient != null) UserManger.getInstance().setAuthClient(authClient);
         return authClient;
     }
 }

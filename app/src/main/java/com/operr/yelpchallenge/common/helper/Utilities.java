@@ -354,4 +354,5 @@ public class Utilities {
 				context, Manifest.permission.ACCESS_FINE_LOCATION);
 	}
 
+
 }

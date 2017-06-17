@@ -8,8 +8,10 @@ import com.operr.yelpchallenge.common.controller.backend.CTHttpError;
 import com.operr.yelpchallenge.common.helper.Utilities;
 import com.operr.yelpchallenge.common.view.BaseApplication;
 import com.operr.yelpchallenge.model.AuthClient;
+import com.operr.yelpchallenge.model.Business;
 import com.operr.yelpchallenge.model.Client;
-import com.operr.yelpchallenge.model.Resturant;
+import com.operr.yelpchallenge.model.Coordinate;
+import com.operr.yelpchallenge.model.ResturantsResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,19 +47,20 @@ public class OperationsManager {
         Call<AuthClient> call = apiService.getAuthClient(client.getClientId(),client.getClientSecret());
         Response<AuthClient> response = call.execute();
 
-        //ensureHttpSuccess(response);
+
+        ensureHttpSuccess(response);
 
         return response.body();
     }
 
 
 
-    public Resturant getResturant(String term,String location) throws IOException {
+    public ResturantsResponse getResturants(Coordinate coordinate) throws IOException {
         HashMap<String, String> headers = ApiClient.getDefaultHeaders();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Resturant> call = apiService.getResturant(headers,term,location);
-        Response<Resturant> response = call.execute();
+        Call<ResturantsResponse> call = apiService.getResturants(headers,coordinate.getLatitude(),coordinate.getLongitude());
+        Response<ResturantsResponse> response = call.execute();
 
         ensureHttpSuccess(response);
 

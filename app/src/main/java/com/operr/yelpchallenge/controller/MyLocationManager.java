@@ -22,8 +22,6 @@ public class MyLocationManager implements GoogleApiClient.ConnectionCallbacks,
     }
 
 
-
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
